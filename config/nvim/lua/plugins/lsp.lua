@@ -48,7 +48,12 @@ return {
             },
         })
 
-          vim.lsp.enable(servers)
+        vim.lsp.config("qmlls", {
+            cmd = { "qmlls" },
+            filetypes = { "qml" },
+        })
+
+        vim.lsp.enable(servers)
       end,
     },
 }

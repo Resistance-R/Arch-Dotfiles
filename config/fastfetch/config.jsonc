@@ -1,0 +1,81 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+
+    "logo": {
+        "source": "~/.config/fastfetch/logo.txt",
+        // "position": "top",
+        "padding": {
+            "top": 1,
+            "right": 0,
+            "left": 0 
+        }
+    },
+
+    "display": {
+    "separator": " › "
+    },
+
+    "modules": [
+        {
+            "type": "custom",
+            "format": "\u001b[36m╭───────┤\u001b[32m Info.     \u001b[36m├─────────────────────────────────────────╮"
+        },
+        {
+            "type": "title",
+            "key": "│ Title ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "os",
+            "key": "│ OS    ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "kernel",
+            "key": "│ Kernel",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[36m├───────┤\u001b[32m Userland. \u001b[36m├─────────────────────────────────────────┤"
+        },
+        {
+            "type": "shell",
+            "key": "│ Shell ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "wm",
+            "key": "│ WM    ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "theme",
+            "key": "│ Theme ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[36m├───────┤\u001b[32m Hardware. \u001b[36m├─────────────────────────────────────────┤"
+        },
+        {
+            "type": "cpu",
+            "key": "│ CPU   ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "gpu",
+            "key": "│ GPU   ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "memory",
+            "key": "│ Memory",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[36m╰─────────────────────────────────────────────────────────────╯"
+        }
+    ]
+}
