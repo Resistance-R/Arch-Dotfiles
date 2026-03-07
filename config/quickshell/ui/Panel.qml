@@ -1,8 +1,10 @@
 import Quickshell
 import Quickshell.Wayland
-import QtQuick 
+import QtQuick
+import QtQuick.Layouts
 
 import "../theme" as MyTheme
+import "./widgets" as Widgets
 
 PanelWindow {
     anchors {
@@ -11,12 +13,39 @@ PanelWindow {
         right: true
     }
 
-    color: MyTheme.Theme.colors.bg
-    implicitHeight: MyTheme.Theme.sizes.barHeight
+    color: MyTheme.Colors.bg
+    implicitHeight: MyTheme.Sizes.barHeight
 
-    Text {
-        color: MyTheme.Theme.colors.text
-        font.pixelSize: MyTheme.Theme.sizes.fontSize
-        text: "hi"
+    RowLayout {
+        anchors.fill: parent
+        spacing: MyTheme.Sizes.gap
+
+        // Left side; Workspace
+        RowLayout {
+            spacing: MyTheme.Sizes.gap
+            Text {
+                color: MyTheme.Colors.text
+                text: "Workspace"
+            }
+        }
+        
+        Item { Layout.fillWidth: true } // spacing
+
+        // Center; Clock
+        RowLayout {
+            spacing: MyTheme.Sizes.gap
+            Text {
+                color: MyTheme.Colors.text
+                text: "Clock"
+            }
+        }
+
+        Item { Layout.fillWidth: true }
+
+        // Right side; Network Stat, Audio, Battery, Power
+        RowLayout {
+            Widgets.Battery {}
+        }
+
     }
 }
