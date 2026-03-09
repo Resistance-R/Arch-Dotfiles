@@ -7,6 +7,14 @@ import "../theme" as MyTheme
 import "./widgets" as Widgets
 
 PanelWindow {
+    id: panel
+
+    property string activePopup: ""
+
+    function togglePopup(name) {
+        activePopup = (activePopup === name) ? "" : name
+    }
+
     anchors {
         top: true
         left: true
@@ -33,10 +41,8 @@ PanelWindow {
 
         // Center; Clock
         RowLayout {
-            spacing: MyTheme.Sizes.gap
-            Text {
-                color: MyTheme.Colors.text
-                text: "Clock"
+            Widgets.Clock {
+                onClicked: panel.togglePopup("clock")
             }
         }
 
@@ -44,8 +50,15 @@ PanelWindow {
 
         // Right side; Network Stat, Audio, Battery, Power
         RowLayout {
-            Widgets.Battery {}
+            Widgets.Battery {
+                onClicked: panel.togglePopup("battery")
+            }
         }
 
+    }
+
+    Widgets.BatteryPopup {
+        panel: panel
+        popupVisible: panel.activePopup === "battery"
     }
 }

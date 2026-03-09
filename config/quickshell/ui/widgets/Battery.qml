@@ -2,7 +2,27 @@ import QtQuick
 import "../../theme" as MyTheme
 import "../../services" as MyService
 
-Text {
-    color: MyTheme.Colors.text
-    text: MyService.BatteryService.percent + '%'
+Item {
+    id: root
+
+    signal clicked
+
+    implicitHeight: batteryText.implicitHeight
+    implicitWidth: batteryText.implicitWidth
+
+    Text {
+        id: batteryText
+
+        anchors.centerIn: parent
+        color: MyTheme.Colors.text
+        text: MyService.BatteryService.percent + '%'
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: root.clicked()
+    }
+
+
 }
+
