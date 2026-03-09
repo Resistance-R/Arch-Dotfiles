@@ -15,7 +15,9 @@ Item {
 
         anchors.centerIn: parent
         color: MyTheme.Colors.text
-        text: MyService.BatteryService.percent + '%'
+        text: MyService.BatteryService.isCharging
+        ? "Charging"
+        : MyService.BatteryService.percent + '%'
     }
 
     MouseArea {

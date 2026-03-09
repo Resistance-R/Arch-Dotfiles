@@ -5,7 +5,7 @@ import "../../services" as MyService
 import "../../theme" as MyTheme
 
 // todo:
-// - [ ] 배터리 팝업 좌우 여백 남기기 (margin)
+// - [x] 배터리 팝업 좌우 여백 남기기 (margin)
 // - [ ] 하드웨어 상태 나타내는 기능 추가
 //    - Memory Usage, CPU Usage / Temperature
 // - [ ] 에너지를 많이 사용하는 프로세스 top 3 표시, 얼마나 많이 사용하는지
@@ -33,9 +33,7 @@ PopupWindow {
         radius: MyTheme.Sizes.radius
         color: MyTheme.Colors.surface
 
-        property real batteryTime_h: Math.floor(MyService.BatteryService.emptyTime / 3600)
-        property real batteryTime_m: Math.floor((MyService.BatteryService.emptyTime % 3600) / 60)
-
+        
         Item {
             id: content
             anchors.centerIn: parent
@@ -46,9 +44,13 @@ PopupWindow {
             Text {
                 font.pixelSize: 16 
                 color: MyTheme.Colors.text
-                text: "Empty in: "
-                        + batteryPopup.batteryTime_h + 'h '
-                        + batteryPopup.batteryTime_m + 'm'
+                text: MyService.BatteryService.isCharging
+                ? "Full in: %1h %2m"
+                    .arg(MyService.BatteryService.chargingTime_h)
+                    .arg(MyService.BatteryService.chargingTime_m)
+                : "Empty in: %1h %2m"
+                    .arg(MyService.BatteryService.leftTime_h)
+                    .arg(MyService.BatteryService.leftTime_m)
             }
         }
     }
