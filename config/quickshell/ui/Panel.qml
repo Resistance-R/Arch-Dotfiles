@@ -25,36 +25,33 @@ PanelWindow {
     implicitHeight: MyTheme.Sizes.barHeight
 
     RowLayout {
-        anchors.fill: parent
-        spacing: MyTheme.Sizes.gap
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
 
-        // Left side; Workspace
-        RowLayout {
-            spacing: MyTheme.Sizes.gap
-            Text {
-                color: MyTheme.Colors.text
-                text: "Workspace"
-            }
+        Widgets.Workspace {}
+    }
+    
+    //Item { Layout.fillWidth: true } // spacing
+
+    // Center; Clock
+    RowLayout {
+        anchors.centerIn: parent
+
+        Widgets.Clock {
+            onClicked: panel.togglePopup("clock")
         }
-        
-        Item { Layout.fillWidth: true } // spacing
+    }
 
-        // Center; Clock
-        RowLayout {
-            Widgets.Clock {
-                onClicked: panel.togglePopup("clock")
-            }
+    //Item { Layout.fillWidth: true }
+
+    // Right side; Network Stat, Audio, Battery, Power
+    RowLayout {
+        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
+
+        Widgets.Battery {
+            onClicked: panel.togglePopup("battery")
         }
-
-        Item { Layout.fillWidth: true }
-
-        // Right side; Network Stat, Audio, Battery, Power
-        RowLayout {
-            Widgets.Battery {
-                onClicked: panel.togglePopup("battery")
-            }
-        }
-
     }
 
     Widgets.BatteryPopup {
