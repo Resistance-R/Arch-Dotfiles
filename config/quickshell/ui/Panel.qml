@@ -31,18 +31,18 @@ PanelWindow {
         Widgets.Workspace {}
     }
     
-    //Item { Layout.fillWidth: true } // spacing
 
     // Center; Clock
     RowLayout {
         anchors.centerIn: parent
 
         Widgets.Clock {
+            panel: panel
             onClicked: panel.togglePopup("clock")
+            formatChange: panel.activePopup === "clock"
         }
     }
 
-    //Item { Layout.fillWidth: true }
 
     // Right side; Network Stat, Audio, Battery, Power
     RowLayout {

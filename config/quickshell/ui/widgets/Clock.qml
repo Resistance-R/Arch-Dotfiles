@@ -6,7 +6,11 @@ Item {
     id: root
 
     signal clicked
-    property bool changeFormat: false
+
+    required property var panel
+    required property var formatChange
+
+    property bool changeFormat: formatChange
 
     implicitWidth: clockText.implicitWidth
     implicitHeight: clockText.implicitHeight
@@ -24,7 +28,6 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            root.changeFormat = !root.changeFormat
             root.clicked()
         }
     }
