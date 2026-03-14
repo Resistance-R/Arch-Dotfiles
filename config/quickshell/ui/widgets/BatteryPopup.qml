@@ -4,12 +4,6 @@ import QtQuick
 import "../../services" as MyService
 import "../../theme" as MyTheme
 
-// todo:
-// - [x] 배터리 팝업 좌우 여백 남기기 (margin)
-// - [x] 하드웨어 상태 나타내는 기능 추가
-//    - Memory Usage, CPU Usage / Temperature
-// - [ ] 에너지를 많이 사용하는 프로세스 top 3 표시, 얼마나 많이 사용하는지
-
 PopupWindow {
     id: root
 
@@ -78,6 +72,29 @@ PopupWindow {
                     + MyService.SystemStatsService.cpuUsage.toFixed(1) + "%\n"
                     + "    Temperature: "
                     + MyService.SystemStatsService.cpuTemp + "°C"
+                }
+
+                Column {
+                    id: topProcessesList
+                    spacing: 4
+
+                    Text {
+                        font.pixelSize: MyTheme.Sizes.fontSize
+                        color: MyTheme.Colors.text
+                        text: "Power-hungry Processes:"
+                    }
+                    
+                    Repeater {
+                        model: MyService.TopProcessesService.topProcesses
+
+                        delegate: Text {
+                            font.pixelSize: MyTheme.Sizes.fontSize
+                            color: MyTheme.Colors.text
+                            text: "    %1. ".arg(index + 1)
+                            + modelData.name
+                            + " (" + modelData.cpu + "%)"
+                        }
+                    }
                 }
             }
         }
