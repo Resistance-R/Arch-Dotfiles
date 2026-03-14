@@ -3,7 +3,7 @@ import QtQuick
 import Quickshell.Io
 
 QtObject {
-    id: monitor
+    id: root
 
     // ===== Public properties =====
     property real memoryUsage: 0
@@ -22,7 +22,7 @@ QtObject {
 
         stdout: StdioCollector {
             onStreamFinished: {
-                monitor.parseMemory(this.text)
+                root.parseMemory(this.text)
             }
         }
     }
@@ -33,7 +33,7 @@ QtObject {
 
         stdout: StdioCollector {
             onStreamFinished: {
-                monitor.parseCpu(this.text)
+                root.parseCpu(this.text)
             }
         }
     }
@@ -44,7 +44,7 @@ QtObject {
 
         stdout: StdioCollector {
             onStreamFinished: {
-                monitor.parseTemperature(this.text)
+                root.parseTemperature(this.text)
             }
         }
     }
@@ -57,9 +57,9 @@ QtObject {
         triggeredOnStart: true
 
         onTriggered: {
-            monitor.meminfoProc.running = true
-            monitor.cpustatProc.running = true
-            monitor.cputempProc.running = true
+            root.meminfoProc.running = true
+            root.cpustatProc.running = true
+            root.cputempProc.running = true
         }
     }
 
@@ -79,9 +79,9 @@ QtObject {
 
         if (total > 0) {
             const used = total - available
-            monitor.memoryUsage = used / total * 100
-            monitor.memoryUsedGiB = used / 1024 / 1024
-            monitor.memoryTotalGiB = total / 1024 / 1024
+            root.memoryUsage = used / total * 100
+            root.memoryUsedGiB = used / 1024 / 1024
+            root.memoryTotalGiB = total / 1024 / 1024
         }
     }
 
@@ -102,15 +102,15 @@ QtObject {
         const nonIdle = user + nice + system + irq + softirq + steal
         const total = idleAll + nonIdle
 
-        if (monitor.prevCpu !== null) {
-            const totalDiff = total - monitor.prevCpu.total
-            const idleDiff = idleAll - monitor.prevCpu.idle
+        if (root.prevCpu !== null) {
+            const totalDiff = total - root.prevCpu.total
+            const idleDiff = idleAll - root.prevCpu.idle
 
             if (totalDiff > 0)
-                monitor.cpuUsage = (totalDiff - idleDiff) / totalDiff * 100
+                root.cpuUsage = (totalDiff - idleDiff) / totalDiff * 100
         }
 
-        monitor.prevCpu = {
+        root.prevCpu = {
             idle: idleAll,
             total: total
         }
@@ -120,6 +120,6 @@ QtObject {
         const raw = parseInt(text.trim())
 
         if (!isNaN(raw))
-            monitor.cpuTemp = raw / 1000
+            root.cpuTemp = raw / 1000
     }
 }

@@ -2,7 +2,7 @@ pragma Singleton
 import QtQuick
 
 QtObject {
-    id: myTime
+    id: root
 
     property date now: new Date()
 
@@ -11,6 +11,6 @@ QtObject {
         running: true
         repeat: true
         triggeredOnStart: true
-        onTriggered: myTime.now = new Date()
+        onTriggered: root.now = new Date()
     }
 }
