@@ -6,7 +6,7 @@ import "../../theme" as MyTheme
 
 // todo:
 // - [x] 배터리 팝업 좌우 여백 남기기 (margin)
-// - [ ] 하드웨어 상태 나타내는 기능 추가
+// - [x] 하드웨어 상태 나타내는 기능 추가
 //    - Memory Usage, CPU Usage / Temperature
 // - [ ] 에너지를 많이 사용하는 프로세스 top 3 표시, 얼마나 많이 사용하는지
 

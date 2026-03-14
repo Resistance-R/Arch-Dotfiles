@@ -14,6 +14,7 @@ Item {
         id: batteryText
 
         anchors.centerIn: parent
+        font.pixelSize: MyTheme.Sizes.fontSize
         color: MyTheme.Colors.text
         text: MyService.BatteryService.isCharging
         ? "Charging"
@@ -24,7 +25,5 @@ Item {
         anchors.fill: parent
         onClicked: root.clicked()
     }
-
-
 }
 

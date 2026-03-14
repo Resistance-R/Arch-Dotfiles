@@ -11,6 +11,8 @@ Item {
 
     Text {
         id: workspaceStat
+
+        font.pixelSize: MyTheme.Sizes.fontSize
         anchors.centerIn: parent
         color: MyTheme.Colors.text
 

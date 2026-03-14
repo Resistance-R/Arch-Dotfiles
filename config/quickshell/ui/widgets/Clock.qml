@@ -19,6 +19,7 @@ Item {
         id: clockText
 
         anchors.centerIn: parent
+        font.pixelSize: MyTheme.Sizes.fontSize
         color: MyTheme.Colors.text
         text: root.changeFormat
         ? Qt.formatDateTime(MyService.TimeService.now, "yyyy/MM/dd - HH:mm:ss")
