@@ -37,7 +37,8 @@ PanelWindow {
         anchors.centerIn: parent
 
         Widgets.Clock {
-            panel: panel
+            id: clockWidget
+
             onClicked: panel.togglePopup("clock")
             formatChange: panel.activePopup === "clock"
         }
@@ -50,12 +51,18 @@ PanelWindow {
         anchors.verticalCenter: parent.verticalCenter
 
         Widgets.Battery {
+            id: batteryWidget
             onClicked: panel.togglePopup("battery")
         }
     }
 
     Widgets.BatteryPopup {
-        panel: panel
+        battery: batteryWidget
         popupVisible: panel.activePopup === "battery"
+    }
+
+    Widgets.ClockPopup {
+        clock: clockWidget
+        popupVisible: panel.activePopup === "clock"
     }
 }

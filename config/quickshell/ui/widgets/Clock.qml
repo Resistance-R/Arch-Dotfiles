@@ -7,7 +7,6 @@ Item {
 
     signal clicked
 
-    required property var panel
     required property var formatChange
 
     property bool changeFormat: formatChange
@@ -30,6 +29,7 @@ Item {
         anchors.fill: parent
         onClicked: {
             root.clicked()
+            MyService.TimeService.reflashCalendar()
         }
     }
 }
