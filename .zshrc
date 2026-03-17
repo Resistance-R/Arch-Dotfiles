@@ -120,4 +120,8 @@ source $ZSH/oh-my-zsh.sh
 source /home/medic/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # alias
-alias v='nvim'
+if (( $+commands[nvim] )); then
+    alias v='nvim'
+fi
+
+alias cleanup='doas pacman -Rns $(pacman -Qtdq)'
