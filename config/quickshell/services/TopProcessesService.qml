@@ -17,7 +17,7 @@ QtObject {
         }
     }
 
-        property var updateTimer: Timer {
+    property var updateTimer: Timer {
         interval: 2000
         running: true
         repeat: true
