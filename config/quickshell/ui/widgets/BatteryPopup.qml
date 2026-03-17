@@ -7,19 +7,20 @@ import "../../theme" as MyTheme
 PopupWindow {
     id: root
 
-    required property var panel
+    required property var battery
     required property var popupVisible
 
     visible: popupVisible
-    anchor.window: panel
-    anchor.rect.x: panel.width - width - MyTheme.Sizes.padding
-    anchor.rect.y: panel.height + MyTheme.Sizes.gap
+
+    anchor.item: battery
+    anchor.edges: Edges.Bottom
+    anchor.gravity: Edges.Bottom
+    anchor.margins.top: MyTheme.Sizes.widgetHeight + MyTheme.Sizes.gap
     
     color: "transparent"
     
     implicitHeight: content.implicitHeight + MyTheme.Sizes.padding * 2
     implicitWidth: content.implicitWidth + MyTheme.Sizes.padding * 2
-
 
     Rectangle {
         id: batteryPopup
