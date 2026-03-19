@@ -7,7 +7,7 @@ import "../theme" as MyTheme
 import "./widgets" as Widgets
 
 PanelWindow {
-    id: panel
+    id: root
 
     property string activePopup: ""
 
@@ -24,6 +24,7 @@ PanelWindow {
     color: MyTheme.Colors.bg
     implicitHeight: MyTheme.Sizes.barHeight
 
+    // Left; Workspace
     RowLayout {
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
@@ -39,30 +40,30 @@ PanelWindow {
         Widgets.Clock {
             id: clockWidget
 
-            onClicked: panel.togglePopup("clock")
-            formatChange: panel.activePopup === "clock"
+            onClicked: root.togglePopup("clock")
+            formatChange: root.activePopup === "clock"
         }
     }
 
 
-    // Right side; Network Stat, Audio, Battery, Power
+    // Right; Network Stat, Audio, Battery, Power
     RowLayout {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
 
         Widgets.Battery {
             id: batteryWidget
-            onClicked: panel.togglePopup("battery")
+            onClicked: root.togglePopup("battery")
         }
     }
 
     Widgets.BatteryPopup {
         battery: batteryWidget
-        popupVisible: panel.activePopup === "battery"
+        popupVisible: root.activePopup === "battery"
     }
 
     Widgets.ClockPopup {
         clock: clockWidget
-        popupVisible: panel.activePopup === "clock"
+        popupVisible: root.activePopup === "clock"
     }
 }

@@ -1,9 +1,9 @@
 import Quickshell
 import QtQuick
 
+import "ui" as UI
+
 ShellRoot {
-    Loader {
-        active: true
-        source: "ui/Panel.qml"
-    }
+    UI.TopBar { }
+    UI.BottomBar { }
 }
