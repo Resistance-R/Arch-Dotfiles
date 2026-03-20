@@ -31,6 +31,10 @@ QtObject {
             return
 
         root.enabled = false
+
+        root.meminfoProc.running = false
+        root.cpustatProc.running = false
+        root.cputempProc.running = false
     }
 
     function workToggle() {

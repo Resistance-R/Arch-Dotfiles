@@ -1,10 +1,10 @@
 import Quickshell
-import Quickshell.Wayland
 import QtQuick
 import QtQuick.Layouts
 
 import "../theme" as MyTheme
 import "./widgets" as Widgets
+
 
 PanelWindow {
     id: root
@@ -53,6 +53,7 @@ PanelWindow {
 
         Widgets.Battery {
             id: batteryWidget
+
             onClicked: root.togglePopup("battery")
         }
     }

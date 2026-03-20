@@ -1,4 +1,5 @@
 import QtQuick
+
 import "../../theme" as MyTheme
 import "../../services" as MyService
 
@@ -23,11 +24,7 @@ Item {
 
     MouseArea {
         anchors.fill: parent
-        onClicked: {
-            root.clicked()
-            MyService.SystemStatsService.workToggle()
-            MyService.TopProcessesService.workToggle()
-        }
+        onClicked: root.clicked()
     }
 }
 

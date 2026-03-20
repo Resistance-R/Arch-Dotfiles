@@ -21,14 +21,9 @@ QtObject {
             return
 
         root.enabled = false
+        root.psProc.running = false
     }
 
-    function workToggle() {
-        if (root.enabled)
-            root.stop()
-        else
-            root.start()
-    }
     // execute ps command
     property var psProc: Process {
         command: ["sh", "-c", "ps -eo pid=,comm=,pcpu= --sort=-pcpu | head -n 3"]

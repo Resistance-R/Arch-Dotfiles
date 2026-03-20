@@ -22,6 +22,17 @@ PopupWindow {
     implicitHeight: content.implicitHeight + MyTheme.Sizes.padding * 2
     implicitWidth: content.implicitWidth + MyTheme.Sizes.padding * 2
 
+    onVisibleChanged: {
+        if (visible) {
+            MyService.SystemStatsService.start()
+            MyService.TopProcessesService.start()
+        }
+        else {
+            MyService.SystemStatsService.stop()
+            MyService.TopProcessesService.stop()
+        }
+    }
+
     Rectangle {
         id: batteryPopup
         anchors.fill: parent
