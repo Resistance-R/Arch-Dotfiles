@@ -4,6 +4,8 @@ import Quickshell.Io
 
 QtObject {
     id: root
+    
+    property bool enabled: false
 
     // ===== Public properties =====
     property real memoryUsage: 0
@@ -15,6 +17,28 @@ QtObject {
 
     // CPU usage 계산용 이전 상태
     property var prevCpu: null
+
+    // toggle functions
+    function start() {
+        if (root.enabled)
+            return
+
+        root.enabled = true
+    }
+
+    function stop() {
+        if (!root.enabled)
+            return
+
+        root.enabled = false
+    }
+
+    function workToggle() {
+        if (root.enabled)
+            root.stop()
+        else
+            root.start()
+    }
 
     // ===== Memory =====
     property var meminfoProc: Process {
@@ -52,7 +76,7 @@ QtObject {
     // ===== Update timer =====
     property var updateTimer: Timer {
         interval: 2000
-        running: true
+        running: root.enabled
         repeat: true
         triggeredOnStart: true
 

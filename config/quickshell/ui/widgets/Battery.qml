@@ -23,7 +23,11 @@ Item {
 
     MouseArea {
         anchors.fill: parent
-        onClicked: root.clicked()
+        onClicked: {
+            root.clicked()
+            MyService.SystemStatsService.workToggle()
+            MyService.TopProcessesService.workToggle()
+        }
     }
 }
 

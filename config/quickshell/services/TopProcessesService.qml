@@ -5,8 +5,30 @@ import Quickshell.Io
 QtObject {
     id: root
 
+    property bool enabled: false
     property var topProcesses: []
 
+    // toggle functions
+    function start() {
+        if (root.enabled)
+            return
+
+        root.enabled = true
+    }
+
+    function stop() {
+        if (!root.enabled)
+            return
+
+        root.enabled = false
+    }
+
+    function workToggle() {
+        if (root.enabled)
+            root.stop()
+        else
+            root.start()
+    }
     // execute ps command
     property var psProc: Process {
         command: ["sh", "-c", "ps -eo pid=,comm=,pcpu= --sort=-pcpu | head -n 3"]
@@ -20,7 +42,7 @@ QtObject {
 
     property var updateTimer: Timer {
         interval: 2000
-        running: true
+        running: root.enabled
         repeat: true
         triggeredOnStart: true
         onTriggered: {
