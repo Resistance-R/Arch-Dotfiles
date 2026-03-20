@@ -7,6 +7,7 @@ QtObject {
 
     property var topProcesses: []
 
+    // execute ps command
     property var psProc: Process {
         command: ["sh", "-c", "ps -eo pid=,comm=,pcpu= --sort=-pcpu | head -n 3"]
 
@@ -27,6 +28,7 @@ QtObject {
         }
     }
 
+    // ps command parser
     function parseProcesses(text) {
         const lines = text.trim().split("\n")
         const result = []

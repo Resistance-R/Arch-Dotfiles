@@ -6,21 +6,23 @@ QtObject {
     id: root
 
     property bool enabled: false
-    property int barCount: 24
-    property var values: []
+    property int barCount: 24 // total bar count
+    property var values: [] // Audio data values from Cava
     property string pendingLine: ""
-    property int processedLength: 0
+    property int processedLength: 0 // value for not working
 
     Component.onCompleted: {
-        resetValues()
+        resetValues() // Inital Cava bar reset
     }
 
+    // Cava Data Parser
     function parseFrame(line) {
         let changed = false
 
         const parts = line.trim().split(";")
         const arr = new Array(root.barCount)
 
+        // parsing data
         for (let i = 0; i < root.barCount; i++) {
             if (i < parts.length) {
                 const v = parseInt(parts[i])
@@ -30,8 +32,9 @@ QtObject {
             }
         }
 
+        // threshold
         for (let i = 0; i < root.barCount; i++) {
-            if (Math.abs(root.values[i] - arr[i]) >= 2) {
+            if (Math.abs(root.values[i] - arr[i]) >= 5) {
                 changed = true
                 break
             }
@@ -88,6 +91,8 @@ QtObject {
         id: cavaProc
 
         running: false
+
+        // execute Cava
         command: [
             "sh",
             "-c",
@@ -97,6 +102,7 @@ QtObject {
         stdout: StdioCollector {
             waitForEnd: false
 
+            // Delivery Cava Data
             onTextChanged: {
                 const newText = text.slice(root.processedLength)
                 root.processedLength = text.length

@@ -42,7 +42,9 @@ Item {
                         : 2
 
                     radius: 1
-                    color: MyTheme.Colors.purple
+                    color: (root.active)
+                    ? MyTheme.Colors.purple
+                    : MyTheme.Colors.yellow
                 }
             }
         }
