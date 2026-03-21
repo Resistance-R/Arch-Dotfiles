@@ -123,6 +123,6 @@ if (( $+commands[nvim] )); then
     alias v='nvim'
 fi
 
-alias cleanup='doas pacman -Rns $(pacman -Qtdq)'
+alias c='doas pacman -Rns $(pacman -Qtdq)' # cleanup
 
 alias u='yay -Syu' # system update
