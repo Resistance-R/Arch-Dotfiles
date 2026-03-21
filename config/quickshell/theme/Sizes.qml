@@ -10,4 +10,5 @@ QtObject {
     property int widgetHeight: 24
 
     property int fontSize: 12
+    property int bigFontSize: 16
 }
