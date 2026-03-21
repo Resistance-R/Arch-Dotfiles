@@ -14,7 +14,8 @@ PopupWindow {
         if (MyService.NetworkService.networkType === "ethernet") {
             return "Ethernet"
         } else if (MyService.NetworkService.networkType === "wifi") {
-            return "%1 (%2%)"
+            return "%1: %2 (%3%)"
+                .arg(MyService.NetworkService.device)
                 .arg(MyService.NetworkService.ssid)
                 .arg(MyService.NetworkService.strength)
         }
