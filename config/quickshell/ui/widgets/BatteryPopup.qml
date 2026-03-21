@@ -52,7 +52,7 @@ PopupWindow {
                 Text {
                     id: batteryTime
 
-                    font.pixelSize: 16 
+                    font.pixelSize: MyTheme.Sizes.bigFontSize
                     color: MyTheme.Colors.text
                     text: MyService.BatteryService.isCharging
                     ? "Full in: %1h %2m"
