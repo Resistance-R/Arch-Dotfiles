@@ -47,7 +47,7 @@ PopupWindow {
             implicitHeight: childrenRect.height
             Column {
                 id: column
-                spacing: 8
+                spacing: MyTheme.Sizes.padding
 
                 Text {
                     id: batteryTime
