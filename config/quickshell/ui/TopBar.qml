@@ -51,6 +51,15 @@ PanelWindow {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
 
+        Widgets.Network {
+            id: networkWidget
+
+            onClicked: root.togglePopup("network")
+            showIp: root.activePopup === "network"
+        }
+
+        spacing: MyTheme.Sizes.padding
+
         Widgets.Battery {
             id: batteryWidget
 
@@ -66,5 +75,10 @@ PanelWindow {
     Widgets.ClockPopup {
         clock: clockWidget
         popupVisible: root.activePopup === "clock"
+    }
+
+    Widgets.NetworkPopup {
+        network: networkWidget
+        popupVisible: root.activePopup === "network"
     }
 }

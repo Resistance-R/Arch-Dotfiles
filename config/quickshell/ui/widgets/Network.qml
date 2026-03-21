@@ -1,0 +1,53 @@
+import QtQuick
+
+import "../../services" as MyService
+import "../../theme" as MyTheme
+
+Item {
+    id: root
+
+    signal clicked
+
+    required property bool showIp
+    property bool ipShowing: showIp
+    property string myIp: ipShowing 
+    ? " " + MyService.NetworkService.ipAddress 
+    : ""
+
+    readonly property var wifi_strength: ["\udb82\udd1f", "\udb82\udd22", "\udb82\udd25", "\udb82\udd28"]
+    readonly property string network_disconnected: "\udb80\udf19"
+    readonly property string ethernet: "\udb80\ude01"
+
+    function networkCheck() {
+        if (MyService.NetworkService.networkType === "ethernet") {
+            return root.ethernet
+        } else if(MyService.NetworkService.networkType === "wifi") {
+            const strength = MyService.NetworkService.strength
+            const level = Math.min(3, Math.floor(strength / 25))
+            
+            return root.wifi_strength[level]
+        } else {
+            return root.network_disconnected
+        }
+    }
+
+    implicitWidth: networkIcon.implicitWidth
+    implicitHeight: networkIcon.implicitHeight
+
+    Text {
+        id: networkIcon
+        
+        font.pixelSize: MyTheme.Sizes.fontSize
+        color: MyTheme.Colors.text
+        text: "%1%2"
+        .arg(root.networkCheck())
+        .arg(root.myIp)
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            root.clicked()
+        }
+    }
+}

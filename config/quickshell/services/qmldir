@@ -4,3 +4,4 @@ singleton WorkspaceService 1.0 WorkspaceService.qml
 singleton SystemStatsService 1.0 SystemStatsService.qml
 singleton TopProcessesService 1.0 TopProcessesService.qml
 singleton CavaService 1.0 CavaService.qml
+singleton NetworkService 1.0 NetworkService.qml
