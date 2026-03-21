@@ -21,7 +21,7 @@ PanelWindow {
         right: true
     }
 
-    color: MyTheme.Colors.bg
+    color: MyTheme.Colors.bgTransparent
     implicitHeight: MyTheme.Sizes.barHeight
 
     // Left; Workspace

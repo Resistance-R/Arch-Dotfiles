@@ -37,7 +37,7 @@ PopupWindow {
 
         anchors.fill: parent
         radius: MyTheme.Sizes.radius
-        color: MyTheme.Colors.surface
+        color: MyTheme.Colors.surfaceTransparent
 
         Item {
             id: content

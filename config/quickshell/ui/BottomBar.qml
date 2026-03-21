@@ -16,7 +16,7 @@ PanelWindow {
     }
 
     implicitHeight: MyTheme.Sizes.widgetHeight
-    color: MyTheme.Colors.bg
+    color: MyTheme.Colors.bgTransparent
 
 
     RowLayout {
