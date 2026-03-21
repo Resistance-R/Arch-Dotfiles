@@ -9,6 +9,6 @@ QtObject {
     property int barHeight: 32
     property int widgetHeight: 24
 
-    property int fontSize: 12
+    property int fontSize: 14
     property int bigFontSize: 16
 }
