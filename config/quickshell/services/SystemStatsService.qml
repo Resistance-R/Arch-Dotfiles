@@ -37,13 +37,6 @@ QtObject {
         root.cputempProc.running = false
     }
 
-    function workToggle() {
-        if (root.enabled)
-            root.stop()
-        else
-            root.start()
-    }
-
     // ===== Memory =====
     property var meminfoProc: Process {
         command: ["cat", "/proc/meminfo"]
