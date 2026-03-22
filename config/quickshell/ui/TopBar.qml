@@ -5,7 +5,6 @@ import QtQuick.Layouts
 import "../theme" as MyTheme
 import "./widgets" as Widgets
 
-
 PanelWindow {
     id: root
 
@@ -13,6 +12,12 @@ PanelWindow {
 
     function togglePopup(name) {
         activePopup = (activePopup === name) ? "" : name
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        enabled: root.activePopup !== ""
+        onClicked: root.activePopup = ""
     }
 
     anchors {
@@ -33,7 +38,6 @@ PanelWindow {
         Widgets.Workspace {}
     }
     
-
     // Center; Clock
     RowLayout {
         anchors.centerIn: parent
@@ -45,7 +49,6 @@ PanelWindow {
             formatChange: root.activePopup === "clock"
         }
     }
-
 
     // Right; Network Stat, Audio, Battery, Power
     RowLayout {
