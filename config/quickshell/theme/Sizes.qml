@@ -6,8 +6,9 @@ QtObject {
     property int padding: 8
     property int gap: 2
 
-    property int barHeight: 32
+    property int barHeight: 28
     property int widgetHeight: 24
+    property int topbarElementHeight: 16
 
     property int fontSize: 14
     property int bigFontSize: 16
