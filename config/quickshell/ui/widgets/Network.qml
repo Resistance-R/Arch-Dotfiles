@@ -11,7 +11,7 @@ Item {
     required property bool showIp
     property bool ipShowing: showIp
     property string myIp: ipShowing 
-    ? " " + MyService.NetworkService.ipAddress 
+    ? " | " + MyService.NetworkService.ipAddress 
     : ""
 
     readonly property var wifi_strength: ["\udb82\udd1f", "\udb82\udd22", "\udb82\udd25", "\udb82\udd28"]
