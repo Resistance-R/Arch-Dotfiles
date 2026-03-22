@@ -72,7 +72,7 @@ Item {
 
                 font.pixelSize: lightText.font.pixelSize
                 font.bold: lightText.font.bold
-                color: "#101030"
+                color: MyTheme.Colors.bgAlt
                 text: wrapper.label
             }
         }
