@@ -34,7 +34,7 @@ QtObject {
 
         // threshold
         for (let i = 0; i < root.barCount; i++) {
-            if (Math.abs(root.values[i] - arr[i]) >= 5) {
+            if (Math.abs(root.values[i] - arr[i]) >= 3) {
                 changed = true
                 break
             }
