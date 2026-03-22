@@ -28,6 +28,7 @@ PanelWindow {
     RowLayout {
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
+        spacing: MyTheme.Sizes.padding
 
         Widgets.Workspace {}
     }
@@ -50,6 +51,7 @@ PanelWindow {
     RowLayout {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
+        spacing: MyTheme.Sizes.padding
 
         Widgets.Network {
             id: networkWidget
@@ -57,8 +59,6 @@ PanelWindow {
             onClicked: root.togglePopup("network")
             showIp: root.activePopup === "network"
         }
-
-        spacing: MyTheme.Sizes.padding
 
         Widgets.Battery {
             id: batteryWidget
