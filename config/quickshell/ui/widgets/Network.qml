@@ -31,17 +31,32 @@ Item {
         }
     }
 
-    implicitWidth: networkIcon.implicitWidth
-    implicitHeight: networkIcon.implicitHeight
+    implicitWidth: wrapper.implicitWidth
+    implicitHeight: wrapper.implicitHeight
 
-    Text {
-        id: networkIcon
-        
-        font.pixelSize: MyTheme.Sizes.fontSize
-        color: MyTheme.Colors.text
-        text: "%1%2"
-        .arg(root.networkCheck())
-        .arg(root.myIp)
+    Rectangle {
+        id: wrapper
+
+        anchors.centerIn: parent
+        implicitHeight: MyTheme.Sizes.topbarElementHeight
+        implicitWidth: networkIcon.implicitWidth + 16
+
+        radius: MyTheme.Sizes.radius
+        color: MyTheme.Colors.widgetSurface
+
+        border.width: 1
+        border.color: MyTheme.Colors.cyanTransparent
+
+        Text {
+            id: networkIcon
+            
+            anchors.centerIn: parent
+            font.pixelSize: MyTheme.Sizes.fontSize
+            color: MyTheme.Colors.text
+            text: "%1%2"
+            .arg(root.networkCheck())
+            .arg(root.myIp)
+        }
     }
 
     MouseArea {

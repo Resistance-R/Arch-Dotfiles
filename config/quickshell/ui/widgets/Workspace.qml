@@ -6,19 +6,34 @@ import "../../services" as MyService
 Item {
     id: root
 
-    implicitHeight: workspaceStat.implicitHeight
-    implicitWidth: workspaceStat.implicitWidth
+    implicitHeight: wrapper.implicitHeight
+    implicitWidth: wrapper.implicitWidth
 
-    Text {
-        id: workspaceStat
+    Rectangle {
+        id: wrapper
 
-        font.pixelSize: MyTheme.Sizes.fontSize
         anchors.centerIn: parent
-        color: MyTheme.Colors.text
+        implicitHeight: MyTheme.Sizes.topbarElementHeight
+        implicitWidth: workspaceStat.implicitWidth + 16
 
-        text: "[%1/%2] : %3"
-            .arg(MyService.WorkspaceService.curWorkspace)
-            .arg(MyService.WorkspaceService.maxWs)
-            .arg(MyService.WorkspaceService.activeTitle)
+        radius: MyTheme.Sizes.radius
+        color: MyTheme.Colors.widgetSurface
+        
+        border.width: 1
+        border.color: MyTheme.Colors.purpleTransparent
+
+        Text {
+            id: workspaceStat
+
+            font.pixelSize: MyTheme.Sizes.fontSize
+            anchors.centerIn: parent
+            color: MyTheme.Colors.text
+            textFormat: Text.RichText
+
+            text: "[ <b>%1</b>/<b>%2</b> ] : %3"
+                .arg(MyService.WorkspaceService.curWorkspace)
+                .arg(MyService.WorkspaceService.maxWs)
+                .arg(MyService.WorkspaceService.activeTitle)
+        }
     }
 }
