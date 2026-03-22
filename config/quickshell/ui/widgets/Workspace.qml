@@ -28,11 +28,11 @@ Item {
             font.pixelSize: MyTheme.Sizes.fontSize
             anchors.centerIn: parent
             color: MyTheme.Colors.text
-            textFormat: Text.RichText
+            textFormat: Text.StyledText
 
-            text: "[ <b>%1</b>/<b>%2</b> ] : %3"
-                .arg(MyService.WorkspaceService.curWorkspace)
-                .arg(MyService.WorkspaceService.maxWs)
+            text: "[ %1/%2 ] : %3"
+                .arg("<b>" + MyService.WorkspaceService.curWorkspace + "</b>")
+                .arg("<b>" + MyService.WorkspaceService.maxWs + "</b>")
                 .arg(MyService.WorkspaceService.activeTitle)
         }
     }
