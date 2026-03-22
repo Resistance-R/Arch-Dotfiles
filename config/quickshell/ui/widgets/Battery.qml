@@ -18,7 +18,7 @@ Item {
         font.pixelSize: MyTheme.Sizes.fontSize
         color: MyTheme.Colors.text
         text: MyService.BatteryService.isCharging
-        ? "Charging"
+        ? "\udb85\udc0b"
         : MyService.BatteryService.percent + '%'
     }
 
