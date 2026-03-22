@@ -16,7 +16,7 @@ QtObject {
         if (activeTl.workspace.id !== focusedWs.id)
             return "Null"
 
-        if (activeTl.title && activeTl.title.length > 20)
+        if (activeTl.title && activeTl.title.length > 40)
             return "%1 ...".arg(activeTl.title.slice(0, 19))
 
         return activeTl.title && activeTl.title.length > 0
