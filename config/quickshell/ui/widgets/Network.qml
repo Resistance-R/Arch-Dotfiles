@@ -44,7 +44,7 @@ Item {
         radius: MyTheme.Sizes.radius
         color: MyTheme.Colors.widgetSurface
 
-        border.width: 1
+        border.width: MyTheme.Sizes.borderWidth
         border.color: MyTheme.Colors.cyanTransparent
 
         Text {
