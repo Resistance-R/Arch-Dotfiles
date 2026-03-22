@@ -40,6 +40,9 @@ PopupWindow {
         radius: MyTheme.Sizes.radius
         color: MyTheme.Colors.surfaceTransparent
 
+        border.width: MyTheme.Sizes.borderWidth
+        border.color: MyTheme.Colors.blueTransparent
+
         Item {
             id: content
 
