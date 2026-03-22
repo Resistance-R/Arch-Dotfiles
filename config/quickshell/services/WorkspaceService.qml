@@ -17,7 +17,7 @@ QtObject {
             return "Null"
 
         if (activeTl.title && activeTl.title.length > 40)
-            return "%1 ...".arg(activeTl.title.slice(0, 19))
+            return "%1 ...".arg(activeTl.title.slice(0, 39))
 
         return activeTl.title && activeTl.title.length > 0
             ? activeTl.title
