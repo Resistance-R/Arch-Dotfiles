@@ -15,7 +15,7 @@ PanelWindow {
         right: true
     }
 
-    implicitHeight: MyTheme.Sizes.widgetHeight
+    implicitHeight: MyTheme.Sizes.barHeight
     color: MyTheme.Colors.bgTransparent
 
 
