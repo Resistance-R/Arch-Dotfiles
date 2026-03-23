@@ -56,6 +56,13 @@ PanelWindow {
         anchors.verticalCenter: parent.verticalCenter
         spacing: MyTheme.Sizes.padding
 
+        Widgets.Audio {
+            id: audioWidget
+
+            onClicked: root.togglePopup("audio")
+            showInfo: root.activePopup === "audio"
+        }
+
         Widgets.Network {
             id: networkWidget
 
@@ -83,5 +90,10 @@ PanelWindow {
     Widgets.NetworkPopup {
         network: networkWidget
         popupVisible: root.activePopup === "network"
+    }
+
+    Widgets.AudioPopup {
+        audio: audioWidget
+        popupVisible: root.activePopup === "audio"
     }
 }
