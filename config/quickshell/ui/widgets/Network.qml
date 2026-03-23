@@ -22,8 +22,9 @@ Item {
         if (MyService.NetworkService.networkType === "ethernet") {
             return root.ethernet
         } else if(MyService.NetworkService.networkType === "wifi") {
+            const icons = root.wifi_strength.length
             const strength = MyService.NetworkService.strength
-            const level = Math.min(3, Math.floor(strength / 25))
+            const level = Math.min(icons - 1, Math.floor(strength / (100 / icons)))
             
             return root.wifi_strength[level]
         } else {
