@@ -56,7 +56,6 @@ PopupWindow {
                 Text {
                     id: volPercent
 
-                    anchors.left: parent.left
                     color: MyTheme.Colors.text
                     font.pixelSize: MyTheme.Sizes.fontSize
                     textFormat: Text.StyledText
@@ -70,15 +69,16 @@ PopupWindow {
                 Item { Layout.fillWidth: true }
 
                 Rectangle {
-                    anchors.right: parent.right
+                    id: muteButton
 
-                    implicitWidth: muteButton.implicitWidth + 12
-                    implicitHeight: muteButton.implicitHeight + 8
+                    implicitWidth: muteButtonText.implicitWidth + 12
+                    implicitHeight: muteButtonText.implicitHeight + 8
                     radius: MyTheme.Sizes.radius
                     color: MyTheme.Colors.bg
 
                     Text {
-                        id: muteButton
+                        id: muteButtonText
+
                         anchors.centerIn: parent
                         color: MyTheme.Colors.text
                         font.pixelSize: MyTheme.Sizes.fontSize
