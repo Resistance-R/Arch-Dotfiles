@@ -15,7 +15,7 @@ Item {
         id: wrapper
 
         implicitHeight: MyTheme.Sizes.topbarElementHeight
-        implicitWidth: 32
+        implicitWidth: 48
 
         radius: MyTheme.Sizes.radius * 5
         color: MyTheme.Colors.widgetSurface
