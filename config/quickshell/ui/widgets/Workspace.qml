@@ -6,6 +6,10 @@ import "../../services" as MyService
 Item {
     id: root
 
+    property string title: (MyService.WorkspaceService.activeTitle === "Null")
+    ? ""
+    : " : " + MyService.WorkspaceService.activeTitle
+
     implicitHeight: wrapper.implicitHeight
     implicitWidth: wrapper.implicitWidth
 
@@ -30,10 +34,10 @@ Item {
             color: MyTheme.Colors.text
             textFormat: Text.StyledText
 
-            text: "[ %1/%2 ] : %3"
+            text: "[ %1/%2 ] %3"
                 .arg("<b>" + MyService.WorkspaceService.curWorkspace + "</b>")
                 .arg("<b>" + MyService.WorkspaceService.maxWs + "</b>")
-                .arg(MyService.WorkspaceService.activeTitle)
+                .arg(root.title)
         }
     }
 }
