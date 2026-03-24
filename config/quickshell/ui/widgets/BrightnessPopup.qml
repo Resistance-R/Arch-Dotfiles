@@ -83,8 +83,6 @@ PopupWindow {
                     }
 
                     background: Rectangle {
-                        id: mySlider
-
                         x: brightSlider.leftPadding
                         y: brightSlider.topPadding + brightSlider.availableHeight / 2 - height / 2
                         implicitWidth: MyTheme.Sizes.sliderWidth

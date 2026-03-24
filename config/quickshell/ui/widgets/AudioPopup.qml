@@ -93,7 +93,6 @@ PopupWindow {
             }
 
             RowLayout {
-                width: parent.width
                 spacing: MyTheme.Sizes.gap * 4
 
                 Text {
@@ -129,7 +128,7 @@ PopupWindow {
                     background: Rectangle {
                         x: volumeSlider.leftPadding
                         y: volumeSlider.topPadding + volumeSlider.availableHeight / 2 - height / 2
-                        implicitWidth: volumeSlider.implicitWidth
+                        implicitWidth: MyTheme.Sizes.sliderWidth
                         implicitHeight: 6
                         radius: 3
                         color: MyTheme.Colors.bgAlt
