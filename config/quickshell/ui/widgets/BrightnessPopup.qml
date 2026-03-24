@@ -43,10 +43,10 @@ PopupWindow {
             Text {
                 color: MyTheme.Colors.text
                 font.pixelSize: MyTheme.Sizes.fontSize
-                font.bold: true
+                textFormat: Text.StyledText
                 text: MyService.BrightnessService.available
-                ? "\udb80\udce0 " + MyService.BrightnessService.brightnessPercent + "%"
-                : "Unavailable"
+                ? "\udb80\udce0 <b>" + MyService.BrightnessService.brightnessPercent + "</b>%"
+                : "<b>Unavailable</b>"
             }
 
             RowLayout {
