@@ -50,11 +50,18 @@ PanelWindow {
         }
     }
 
-    // Right; Network Stat, Audio, Battery, Power
+    // Right; Brightness, Audio, Network Stat, Battery
     RowLayout {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         spacing: MyTheme.Sizes.padding
+
+        Widgets.Brightness {
+            id: brightWidget
+
+            onClicked: root.togglePopup("bright")
+            showInfo: root.activePopup === "bright"
+        }
 
         Widgets.Audio {
             id: audioWidget
@@ -95,5 +102,10 @@ PanelWindow {
     Widgets.AudioPopup {
         audio: audioWidget
         popupVisible: root.activePopup === "audio"
+    }
+
+    Widgets.BrightnessPopup {
+        bright: brightWidget
+        popupVisible: root.activePopup === "bright"
     }
 }
