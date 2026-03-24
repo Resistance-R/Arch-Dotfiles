@@ -7,6 +7,7 @@ QtObject {
     property int gap: 2
 
     property int borderWidth: 1
+    property int sliderWidth: 160
 
     property int barHeight: 28
     property int widgetHeight: 24
