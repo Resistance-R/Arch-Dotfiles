@@ -37,6 +37,8 @@ PanelWindow {
     RowLayout {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
+
+        Widgets.Power {}
     }
 
 }

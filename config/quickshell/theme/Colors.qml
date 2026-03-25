@@ -17,6 +17,10 @@ QtObject {
     property color blueTransparent: Qt.rgba(0x82 / 255, 0xaa / 255, 0xff / 255, 0.3)
     property color cyanTransparent: Qt.rgba(0x86 / 255, 0xe1 / 255, 0xfc / 255, 0.3)
 
+    property color redTransparent: Qt.rgba(0xff / 255, 0x75 / 255, 0x7f / 255, 0.6)
+    property color greenTransparent: Qt.rgba(0xc3 / 255, 0xe8 / 255, 0x8d / 255, 0.6)
+    property color yellowTransparent: Qt.rgba(0xff / 255, 0xc7 / 255, 0x77 / 255, 0.6)
+
     property color widgetSurface: Qt.rgba(0x2f / 255, 0x33 / 255, 0x4d / 255, 0.6)
 
     // Text

@@ -15,4 +15,7 @@ QtObject {
 
     property int fontSize: 14
     property int bigFontSize: 16
+
+    property int powerButtonsLength: 48
+    property int powerButtonsRadius: 24
 }

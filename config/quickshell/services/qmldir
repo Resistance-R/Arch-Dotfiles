@@ -7,3 +7,4 @@ singleton CavaService 1.0 CavaService.qml
 singleton NetworkService 1.0 NetworkService.qml
 singleton AudioService 1.0 AudioService.qml
 singleton BrightnessService 1.0 BrightnessService.qml
+singleton PowerService 1.0 PowerService.qml
