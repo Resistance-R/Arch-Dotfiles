@@ -14,6 +14,7 @@ Item {
     implicitWidth: wrapper.implicitWidth
     implicitHeight: wrapper.implicitHeight
 
+
     Rectangle {
         id: wrapper
 
@@ -27,6 +28,12 @@ Item {
         border.width: MyTheme.Sizes.borderWidth
         border.color: MyTheme.Colors.blueTransparent
 
+        clip: true
+
+        Behavior on implicitWidth {
+            MyTheme.WidthAnim {}
+        }
+
         Text {
             id: clockText
 
@@ -34,6 +41,11 @@ Item {
             font.pixelSize: MyTheme.Sizes.fontSize
             font.bold: root.changeFormat ? false : true
             color: MyTheme.Colors.text
+
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignHCenter
+            elide: Text.ElideMiddle
+
             text: root.changeFormat
             ? Qt.formatDateTime(MyService.TimeService.now, "yyyy/MM/dd - HH:mm:ss")
             : Qt.formatTime(MyService.TimeService.now, "HH:mm")

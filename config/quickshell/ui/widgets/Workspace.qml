@@ -13,6 +13,7 @@ Item {
     implicitHeight: wrapper.implicitHeight
     implicitWidth: wrapper.implicitWidth
 
+
     Rectangle {
         id: wrapper
 
@@ -26,6 +27,12 @@ Item {
         border.width: MyTheme.Sizes.borderWidth
         border.color: MyTheme.Colors.purpleTransparent
 
+        clip: true
+
+        Behavior on implicitWidth {
+            MyTheme.WidthAnim {}
+        }
+
         Text {
             id: workspaceStat
 
@@ -33,6 +40,10 @@ Item {
             anchors.centerIn: parent
             color: MyTheme.Colors.text
             textFormat: Text.StyledText
+
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignVCenter
+            elide: Text.ElideRight
 
             text: "[ %1/%2 ] %3"
                 .arg("<b>" + MyService.WorkspaceService.curWorkspace + "</b>")

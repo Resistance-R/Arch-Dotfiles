@@ -45,6 +45,12 @@ Item {
         border.width: MyTheme.Sizes.borderWidth
         border.color: MyTheme.Colors.cyanTransparent
 
+        clip: true
+
+        Behavior on implicitWidth {
+            MyTheme.WidthAnim {}
+        }
+
         Text {
             id: brightIcon
             
@@ -52,6 +58,11 @@ Item {
             font.pixelSize: MyTheme.Sizes.fontSize
             textFormat: Text.StyledText
             color: MyTheme.Colors.text
+
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignHCenter
+            elide: Text.ElideRight
+
             text: "%1%2"
             .arg(root.printBrightnessStat())
             .arg(root.info)
