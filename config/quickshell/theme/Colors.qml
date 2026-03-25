@@ -22,6 +22,7 @@ QtObject {
     property color yellowTransparent: Qt.rgba(0xff / 255, 0xc7 / 255, 0x77 / 255, 0.6)
 
     property color widgetSurface: Qt.rgba(0x2f / 255, 0x33 / 255, 0x4d / 255, 0.6)
+    property color separator: Qt.rgba(0x82 / 255, 0x8b / 255, 0xb8 / 255, 0.5)
 
     // Text
     property color text: "#c8d3f5"

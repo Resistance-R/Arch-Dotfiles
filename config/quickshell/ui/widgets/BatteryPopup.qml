@@ -89,13 +89,13 @@ PopupWindow {
                     /* Separator */
                     width: MyTheme.Sizes.separatorWidth
                     height: MyTheme.Sizes.separatorHeight
+                    radius: MyTheme.Sizes.radius
 
-                    color: MyTheme.Colors.textDim
+                    color: MyTheme.Colors.separator
                 }
 
                 Text {
                     id: batteryIcon
-
 
                     font.pixelSize: MyTheme.Sizes.fontSize
                     font.family: "monospace"
@@ -240,8 +240,9 @@ PopupWindow {
                     /* Separator */
                     width: MyTheme.Sizes.separatorWidth
                     height: MyTheme.Sizes.separatorHeight
+                    radius: MyTheme.Sizes.radius
 
-                    color: MyTheme.Colors.textDim
+                    color: MyTheme.Colors.separator
                 }
 
                 Column {
