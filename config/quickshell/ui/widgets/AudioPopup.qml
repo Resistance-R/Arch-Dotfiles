@@ -23,6 +23,11 @@ PopupWindow {
     implicitWidth: contentColumn.implicitWidth + MyTheme.Sizes.padding * 2
     implicitHeight: contentColumn.implicitHeight + MyTheme.Sizes.padding * 2
 
+    MyTheme.FadeAnim {
+        target: audioPopup
+        visibleState: root.popupVisible
+    }
+
     Rectangle {
         id: audioPopup
 

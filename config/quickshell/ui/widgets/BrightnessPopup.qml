@@ -23,6 +23,11 @@ PopupWindow {
     implicitWidth: contentColumn.implicitWidth + MyTheme.Sizes.padding * 2
     implicitHeight: contentColumn.implicitHeight + MyTheme.Sizes.padding * 2
 
+    MyTheme.FadeAnim {
+        target: brightPopup
+        visibleState: root.popupVisible
+    }
+
     Rectangle {
         id: brightPopup
 
@@ -32,7 +37,6 @@ PopupWindow {
 
         border.width: MyTheme.Sizes.borderWidth
         border.color: MyTheme.Colors.blueTransparent
-
 
         Column {
             id: contentColumn

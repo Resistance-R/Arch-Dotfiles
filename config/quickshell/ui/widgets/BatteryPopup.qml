@@ -33,8 +33,14 @@ PopupWindow {
         }
     }
 
+    MyTheme.FadeAnim {
+        target: batteryPopup
+        visibleState: root.popupVisible
+    }
+
     Rectangle {
         id: batteryPopup
+
         anchors.fill: parent
         radius: MyTheme.Sizes.radius
         color: MyTheme.Colors.surfaceTransparent
@@ -44,6 +50,7 @@ PopupWindow {
 
         Item {
             id: content
+
             anchors.centerIn: parent
 
             implicitWidth: childrenRect.width

@@ -33,6 +33,11 @@ PopupWindow {
     implicitHeight: content.implicitHeight + MyTheme.Sizes.padding * 2
     implicitWidth: content.implicitWidth + MyTheme.Sizes.padding * 2
 
+    MyTheme.FadeAnim {
+        target: networkPopup
+        visibleState: root.popupVisible
+    }
+
     Rectangle {
         id: networkPopup
 
