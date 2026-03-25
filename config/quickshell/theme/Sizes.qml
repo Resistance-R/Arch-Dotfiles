@@ -8,10 +8,12 @@ QtObject {
 
     property int borderWidth: 1
     property int sliderWidth: 160
+    property int separatorWidth: 240
 
     property int barHeight: 28
     property int widgetHeight: 24
     property int topbarElementHeight: 16
+    property int separatorHeight: 1
 
     property int fontSize: 14
     property int bigFontSize: 16

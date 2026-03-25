@@ -10,6 +10,17 @@ PopupWindow {
     required property var battery
     required property var popupVisible
 
+    function makeBar(percent, width) {
+        const clamped = Math.max(0, Math.min(100, percent))
+        const filled = Math.round(clamped / 100 * width)
+        const empty = width - filled
+
+        return "["
+            + "#".repeat(filled)
+            + "-".repeat(empty)
+            + "]"
+    }
+
     visible: popupVisible
 
     anchor.item: battery
@@ -55,6 +66,7 @@ PopupWindow {
 
             implicitWidth: childrenRect.width
             implicitHeight: childrenRect.height
+
             Column {
                 id: column
                 spacing: MyTheme.Sizes.padding
@@ -73,27 +85,163 @@ PopupWindow {
                         .arg(MyService.BatteryService.leftTime_m)
                 }
 
+                Rectangle {
+                    /* Separator */
+                    width: MyTheme.Sizes.separatorWidth
+                    height: MyTheme.Sizes.separatorHeight
+
+                    color: MyTheme.Colors.textDim
+                }
+
                 Text {
-                    id: memUsage
+                    id: batteryIcon
+
 
                     font.pixelSize: MyTheme.Sizes.fontSize
+                    font.family: "monospace"
+                    color: MyTheme.Colors.cyan
+                    text: "Battery: "
+                }
+
+                Row {
+                    id: batteryFamily
+
+                    Text {
+                        id: batteryBar
+
+                        
+                        font.pixelSize: MyTheme.Sizes.fontSize
+                        font.family: "monospace"
+                        color: MyTheme.Colors.green
+                        text: "     " + 
+                        root.makeBar(MyService.BatteryService.percent, 12)
+                    }
+
+                    Text {
+                        id: batteryStat
+
+                        font.pixelSize: MyTheme.Sizes.fontSize
+                        font.family: "monospace"
+                        color: MyTheme.Colors.text
+                        text: "%1 %2"
+                            .arg(MyService.BatteryService.percent + "%")
+                            .arg( (MyService.BatteryService.isCharging)
+                                ? "\udb85\udc0b"
+                                : "\udb84\udea3")
+                    }
+                }
+
+                Row {
+                    id: memFamily
+
+                    Text {
+                        id: memIcon
+
+                        font.pixelSize: MyTheme.Sizes.fontSize
+                        font.family: "monospace"
+                        color: MyTheme.Colors.cyan
+                        text: "Mem: "
+                    }
+
+                    Text {
+                        id: memBar
+
+                        font.pixelSize: MyTheme.Sizes.fontSize
+                        font.family: "monospace"
+                        color: MyTheme.Colors.red
+                        text: root.makeBar(MyService.SystemStatsService.memoryUsage, 12) + "\n"
+                    }
+
+                    Text {
+                        id: memPercent
+
+                        font.pixelSize: MyTheme.Sizes.fontSize
+                        font.family: "monospace"
+                        color: MyTheme.Colors.text
+                        text: MyService.SystemStatsService.memoryUsage.toFixed(1) + "%\n"
+                    }
+                }
+
+                Text {
+                    id: memGiB
+
+                    font.pixelSize: MyTheme.Sizes.fontSize
+                    font.family: "monospace"
+                    textFormat: Text.StyledText
                     color: MyTheme.Colors.text
-                    text: "Mem Usage:\n    "
-                    + MyService.SystemStatsService.memoryUsage.toFixed(1) + '%'
-                    + " (%1 GiB / %2 GiB)"
+                    text: "<pre>     └ <b>%1</b> / <b>%2</b> (GiB)</pre>"
                         .arg(MyService.SystemStatsService.memoryUsedGiB.toFixed(2))
                         .arg(MyService.SystemStatsService.memoryTotalGiB.toFixed(2))
                 }
                 
-                Text {
-                    id: cpuStats
+                Row {
+                    id: cpuFamily
 
-                    font.pixelSize: MyTheme.Sizes.fontSize
-                    color: MyTheme.Colors.text
-                    text: "CPU:\n    Usage: "
-                    + MyService.SystemStatsService.cpuUsage.toFixed(1) + "%\n"
-                    + "    Temperature: "
-                    + MyService.SystemStatsService.cpuTemp + "°C"
+                    Text {
+                        id: cpuIcon
+
+                        font.pixelSize: MyTheme.Sizes.fontSize
+                        font.family: "monospace"
+                        color: MyTheme.Colors.cyan
+                        text: "CPU: "
+                    }
+                    
+                    Text {
+                        id: cpuBar
+
+                        font.pixelSize: MyTheme.Sizes.fontSize
+                        font.family: "monospace"
+                        color: MyTheme.Colors.yellow
+                        text: root.makeBar(MyService.SystemStatsService.cpuUsage, 12)
+                    }
+
+                    Text {
+                        id: cpuPercent
+
+                        font.pixelSize: MyTheme.Sizes.fontSize
+                        font.family: "monospace"
+                        color: MyTheme.Colors.text
+                        text: MyService.SystemStatsService.cpuUsage.toFixed(1) + "%"
+                    }
+                }
+
+                Row {
+                    id: cpuSub
+
+                    Text {
+                        font.pixelSize: MyTheme.Sizes.fontSize
+                        font.family: "monospace"
+                        textFormat: Text.StyledText
+                        color: MyTheme.Colors.text
+
+                        text: "<pre>     └ \uf2c9: </pre>"
+                    }
+
+                    Text {
+                        id: cpuTempBar
+
+                        font.pixelSize: MyTheme.Sizes.fontSize
+                        font.family: "monospace"
+                        color: MyTheme.Colors.yellow
+                        text: root.makeBar(MyService.SystemStatsService.cpuTemp, 10)
+                    }
+
+                    Text {
+                        id: cpuTemp
+
+                        font.pixelSize: MyTheme.Sizes.fontSize
+                        font.family: "monospace"
+                        color: MyTheme.Colors.text
+                        text: MyService.SystemStatsService.cpuTemp + "°C"
+                    }
+                }
+
+                Rectangle {
+                    /* Separator */
+                    width: MyTheme.Sizes.separatorWidth
+                    height: MyTheme.Sizes.separatorHeight
+
+                    color: MyTheme.Colors.textDim
                 }
 
                 Column {
