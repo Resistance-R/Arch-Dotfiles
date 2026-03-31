@@ -1,11 +1,20 @@
 import QtQuick
 import Quickshell
+import Quickshell.Hyprland
 
 import "../../theme" as MyTheme
 import "../../services" as MyService
 
 Item {
     id: root
+
+    GlobalShortcut {
+        name: "powerMenu"
+        onPressed: {
+            root.pendingAction = ""
+            root.popupOpen = !root.popupOpen
+        }
+    }
 
     property bool popupOpen: false
     property string pendingAction: ""
