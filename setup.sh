@@ -117,7 +117,7 @@ link_config_items() {
 
 main() {
     if [[ ! -d "$DOTFILES_DIR" ]]; then
-        error "dotfiles derectory is NOT found: $DOTFILES_DIR"
+        error "dotfiles directory is NOT found: $DOTFILES_DIR"
         exit 1
     fi
 
