@@ -59,5 +59,8 @@ chmod 700 setup.sh
 ./setup.sh
 ```
 ## Why
-Just for fun.
+I wanted more flexibility, and features than what Waybar could offer.
+So, I built my own UI system for my workflow, and what began as a simple ricing experiment gradually grew into a full desktop environment setup.
+
+... and just for fun!
 
