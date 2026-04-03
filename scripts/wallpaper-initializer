@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+WALLPAPER_DIR="$HOME/Pictures/Wallpaper"
+
+mapfile -d '' -t files < <(
+  find "$WALLPAPER_DIR" -maxdepth 1 -type f \
+    \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) \
+    -print0
+)
+
+[ ${#files[@]} -eq 0 ] && exit 1
+
+selected="$(printf '%s\0' "${files[@]}" | shuf -z -n 1 | tr -d '\0')"
+pos="$(shuf -n 1 -e center top-left top-right bottom-left bottom-right)"
+
+awww img "$selected" \
+  --transition-type grow \
+  --transition-duration 1 \
+  --transition-fps 60 \
+  --transition-pos "$pos"

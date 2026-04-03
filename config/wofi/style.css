@@ -6,7 +6,7 @@
 
 #window {
     background: rgba(47, 51, 77, 0.9);
-    margin: auto;
+    margin: 8px;
     padding: 8px;
     border-radius: 8px;
     border: 2px solid rgba(192, 153, 255, 0.7);
