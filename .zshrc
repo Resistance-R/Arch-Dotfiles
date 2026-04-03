@@ -1,81 +1,47 @@
-# run fastfetch on shell running
-if command -v fastfetch >/dev/null 2>&1; then
-  fastfetch
-fi
-
 # =========================
-# PATH
+# PATH & Core Value
 # =========================
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# =========================
-# OH-MY-ZSH
-# =========================
+export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export ZSH="${ZSH:-$HOME/.oh-my-zsh}"
-
+ZSH_CUSTOM="${ZSH_CUSTOM:-$ZSH/custom}"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# plugins
+# =========================
+# Plugins
+# =========================
 plugins=()
+[[ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]]     && plugins+=(zsh-autosuggestions)
+[[ -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]] && plugins+=(zsh-syntax-highlighting)
 
-if [ -d "$ZSH/custom/plugins/zsh-autosuggestions" ]; then
-  plugins+=(zsh-autosuggestions)
-fi
-
-if [ -d "$ZSH/custom/plugins/zsh-syntax-highlighting" ]; then
-  plugins+=(zsh-syntax-highlighting)
-fi
-
-# oh-my-zsh load
-if [ -f "$ZSH/oh-my-zsh.sh" ]; then
-  source $ZSH/oh-my-zsh.sh
-fi
+# Load OMZ file
+[[ -f "$ZSH/oh-my-zsh.sh" ]] && source "$ZSH/oh-my-zsh.sh"
 
 # =========================
-# Powerlevel10k
+# Load Theme
 # =========================
-if [ -f ~/.p10k.zsh ]; then
-  source ~/.p10k.zsh
-fi
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+# Run fastfetch on initial shell
+(( $+commands[fastfetch] )) && fastfetch
 
 # =========================
 # Alias
 # =========================
 
-# neovim
-if command -v nvim >/dev/null 2>&1; then
-  alias v="nvim"
-fi
-
-# fastfetch
-if command -v fastfetch >/dev/null 2>&1; then
-  alias ff="fastfetch"
-fi
-
-# Cleanup
-if command -v pacman >/dev/null 2>&1; then
-  alias c='doas pacman -Rns $(pacman -Qtdq)'
-fi
-
-# Update
-if command -v yay >/dev/null 2>&1; then
-  alias u='yay -Syu'
-fi
+(( $+commands[nvim] ))      && alias v='nvim'
+(( $+commands[fastfetch] )) && alias ff='fastfetch'
+(( $+commands[pacman] ))    && alias c='doas pacman -Rns $(pacman -Qtdq)'
+(( $+commands[yay] ))       && alias u='yay -Syu'
 
 # =========================
 # etc.
 # =========================
-
-# history setting
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
 setopt HIST_IGNORE_ALL_DUPS
 setopt SHARE_HISTORY
-
-# automation cd
 setopt AUTO_CD
 
-# color scheme
 autoload -U colors && colors
