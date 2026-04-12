@@ -4,7 +4,7 @@ set -eu
 TMUX_BIN="$(command -v tmux || { echo 'tmux not found'; exit 1; })"
 WOFI_BIN="$(command -v wofi || { echo 'wofi not found'; exit 1; })"
 
-# 세션 목록
+# session list
 sessions="$("$TMUX_BIN" list-sessions -F '#{session_name}' 2>/dev/null || true)"
 
 menu="Create new session…\n$sessions"
@@ -22,7 +22,7 @@ else
     create=0
 fi
 
-# tmux 내부
+# internal tmux
 if [ -n "${TMUX-}" ]; then
     if [ "$create" -eq 1 ] && ! "$TMUX_BIN" has-session -t "$session" 2>/dev/null; then
         "$TMUX_BIN" new-session -ds "$session"
@@ -30,7 +30,7 @@ if [ -n "${TMUX-}" ]; then
     exec "$TMUX_BIN" switch-client -t "$session"
 fi
 
-# tmux 외부 → kitty 실행
+# external tmux → execute kitty
 if [ "$create" -eq 1 ]; then
     exec kitty sh -lc "$TMUX_BIN new-session -s '$session'"
 else
