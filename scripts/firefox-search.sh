@@ -17,7 +17,10 @@ choice="$(printf '%b' "$default_menu" | "$WOFI_BIN" --dmenu -p "search in firefo
 [ -n "$choice" ] || exit 0
 
 if [ "$choice" = "Open New Tab" ]; then # open new tab
-    $FIREFOX_BIN &
+    "$FIREFOX_BIN" &
+elif printf '%s' "$choice" | grep -qE '^y:'; then # search in youtube
+    query=$(printf '%s' "$choice" | sed -e 's/^y://' -e 's/ /+/g')
+    "$FIREFOX_BIN" --new-window "https://www.youtube.com/results?search_query=$query" &
 elif printf '%s' "$choice" | grep -qE '^[^ ]+\.[^ ]+$'; then # open site url
   "$FIREFOX_BIN" --new-window "$choice" &
 else # search keyword
